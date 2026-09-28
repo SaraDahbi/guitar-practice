@@ -1,0 +1,34 @@
+<section class="card">
+  <h1>Créer un compte</h1>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-group">
+      <label>Nom<input formControlName="name" /></label>
+      @if (form.get('name')?.touched && form.get('name')?.invalid) {
+        <span class="error-message">Le nom est requis</span>
+      }
+    </div>
+
+    <div class="form-group">
+      <label>Email<input type="email" formControlName="email" /></label>
+      @if (form.get('email')?.touched && form.get('email')?.hasError('required')) {
+        <span class="error-message">L'email est requis</span>
+      }
+      @if (form.get('email')?.touched && form.get('email')?.hasError('email')) {
+        <span class="error-message">Format email invalide</span>
+      }
+    </div>
+
+    <div class="form-group">
+      <label>Mot de passe<input type="password" formControlName="password" /></label>
+      @if (form.get('password')?.touched && form.get('password')?.invalid) {
+        <span class="error-message">Le mot de passe est requis</span>
+      }
+    </div>
+
+    <button type="submit" [disabled]="form.invalid">Créer mon compte</button>
+  </form>
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  }
+  <p><a routerLink="/login">Déjà inscrit ?</a></p>
+</section>

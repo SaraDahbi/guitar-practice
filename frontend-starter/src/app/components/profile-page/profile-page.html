@@ -1,0 +1,36 @@
+<section class="card">
+  <h1>Mon profil</h1>
+
+  @if (loadError()) {
+    <p class="error">{{ loadError() }}</p>
+  }
+
+  @if (auth.currentUser(); as user) {
+    <div class="user-info">
+      <p>
+        <b>{{ user.name }}</b><br />
+        <small>{{ user.email }}</small><br />
+        <small>Membre depuis {{ user.createdAt.slice(0, 10) }}</small>
+      </p>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="save()">
+      <div class="form-group">
+        <label>Nouveau nom<input formControlName="name" /></label>
+        @if (form.get('name')?.touched && form.get('name')?.invalid) {
+          <span class="error-message">Le nom est requis</span>
+        }
+      </div>
+
+      @if (saveError()) {
+        <p class="error">{{ saveError() }}</p>
+      }
+
+      <button type="submit" [disabled]="form.invalid || saving()">
+        {{ saving() ? 'Enregistrement...' : 'Enregistrer' }}
+      </button>
+    </form>
+  } @else {
+    <p>Chargement du profil...</p>
+  }
+</section>

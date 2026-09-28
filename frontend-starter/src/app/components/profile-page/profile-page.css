@@ -1,0 +1,14 @@
+:host { display: block; max-width: 700px; margin: 0 auto; }
+
+.user-info { margin: 1rem 0; padding: 1rem; background: #f8f9fa; border-radius: 4px; }
+.user-info p { margin: 0; }
+.user-info b { font-size: 1.1rem; }
+.user-info small { color: #666; }
+
+.form-group { margin-bottom: 1rem; display: flex; flex-direction: column; }
+.form-group label { display: flex; flex-direction: column; margin-bottom: 0.5rem; }
+.form-group input { padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; }
+.form-group input:focus { outline: none; border-color: #007bff; box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); }
+
+.error-message { color: #dc3545; font-size: 0.875rem; margin-top: 0.25rem; }
+.error { color: #dc3545; margin: 1rem 0; padding: 0.75rem; background: #f8d7da; border: 1px solid #f5c6cb; border-radius: 4px; }
